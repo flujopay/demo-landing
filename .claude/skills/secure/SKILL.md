@@ -20,6 +20,7 @@ Detecta la cuenta con acceso al repo y exporta `GH_TOKEN` y `GITHUB_USER`.
 **Obligatorio antes de cada `/deploy`.** No es opcional.
 
 También antes de:
+
 - Merge a `main`
 - Promoción de `staging` a `main`
 - Primer deploy de un entorno nuevo
@@ -36,6 +37,7 @@ Work-item padre  ([SECURITY] fix)             ← issue padre
 ```
 
 Reglas:
+
 - **Cada bloqueante es una task** (sub-issue nativo del padre vía `addSubIssue`).
 - Los **labels describen severidad y categoría del check**, no narrativa libre.
 - El **body de la task** explica el check fallido, el impacto y la **remediación concreta**.
@@ -44,6 +46,7 @@ Reglas:
 - **Si pasa todo** → no se crea work-item; se reporta ✓ y `/deploy` puede continuar.
 
 Categorías de check (usadas como label secundario):
+
 - `env-vars` — variables faltantes / desincronizadas
 - `secrets` — credenciales hardcodeadas / leaked
 - `gitignore` — archivos sensibles no ignorados
@@ -80,6 +83,7 @@ comm -23 /tmp/vars-example.txt /tmp/vars-github.txt
 ```
 
 Bloquear si:
+
 - Hay vars usadas en código que no están en `.env.example` → categoría `env-vars`, severity `high`
 - Hay vars en `.env.example` sin secret correspondiente en GitHub → categoría `env-vars`, severity `high`
 
@@ -250,6 +254,7 @@ done
 ```
 
 Colores recomendados (no bloquea si fallan):
+
 - `severity-critical` → `B60205`
 - `severity-high` → `D93F0B`
 - `severity-medium` → `FBCA04`

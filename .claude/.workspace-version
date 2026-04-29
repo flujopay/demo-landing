@@ -68,5 +68,11 @@
     "destPath": "docs/QUICK_START.md"
   },
   "installedAt": "2026-04-29T21:49:29.930Z",
-  "updatedAt": "2026-04-29T21:49:29.932Z"
+  "updatedAt": "2026-04-29T21:49:29.932Z",
+  "githubProject": {
+    "number": 3,
+    "url": "https://github.com/orgs/flujopay/projects/3",
+    "title": "Sena Landing",
+    "owner": "flujopay"
+  }
 }

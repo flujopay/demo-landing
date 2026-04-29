@@ -1,9 +1,9 @@
 ---
 name: Refactor (work-item)
 about: Mejora técnica sin cambio de comportamiento. Agrupa tasks bajo una rama y un PR único.
-title: '[REFACTOR] '
+title: "[REFACTOR] "
 labels: refactor
-assignees: ''
+assignees: ""
 ---
 
 ## Motivación
@@ -19,7 +19,7 @@ assignees: ''
 ## Criterios de aceptación
 
 - [ ] El comportamiento observable no cambia (mismos tests siguen pasando)
-- [ ] 
+- [ ]
 
 ## Repos afectados
 

@@ -1,9 +1,9 @@
 ---
 name: Fix / Bug (work-item)
 about: Corrección de un bug o comportamiento incorrecto. Agrupa tasks bajo una rama y un PR único.
-title: '[FIX] '
+title: "[FIX] "
 labels: fix
-assignees: ''
+assignees: ""
 ---
 
 ## Descripción del problema
@@ -12,9 +12,9 @@ assignees: ''
 
 ## Pasos para reproducir
 
-1. 
-2. 
-3. 
+1.
+2.
+3.
 
 ## Comportamiento esperado
 
@@ -47,8 +47,8 @@ assignees: ''
 
 ## Entorno
 
-- Rama: 
-- Versión: 
+- Rama:
+- Versión:
 
 ## Rama de trabajo
 

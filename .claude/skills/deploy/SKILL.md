@@ -38,6 +38,7 @@ Work-item padre  ([DEPLOY] chore)             ← issue padre
 ```
 
 Reglas:
+
 - **Cada componente accionable es una task** (sub-issue nativo del padre vía `addSubIssue`).
 - Los **labels describen el componente y el proveedor**, no narrativa libre.
 - El **body de la task** explica qué hay que generar/configurar y los criterios de aceptación.
@@ -47,6 +48,7 @@ Reglas:
 - Tanto el padre como cada task se agregan al **GitHub Project** del workspace.
 
 Componentes posibles (label secundario):
+
 - `component-docker` — Dockerfile
 - `component-workflow` — `.github/workflows/deploy.yml`
 - `component-env` — `.env.example`
@@ -237,16 +239,17 @@ git log --oneline -5
 
 **Tabla de recomendación por stack (si elige opción 2):**
 
-| Stack | Recomendado | Alternativas | Cuándo elegirlo |
-|---|---|---|---|
-| Next.js / React | **Vercel** | Railway, Fly.io, Netlify | SSR fácil, preview por PR, plan free generoso |
-| Django / FastAPI | **Railway** | Fly.io, Render, Cloud Run | DB Postgres incluida, deploy por git push |
-| Go | **Fly.io** | Railway, Cloud Run | Binario compacto, edge deploy global |
-| Flutter (web) | **Firebase Hosting** | Vercel, Netlify | Hosting estático + Firebase stack |
-| Flutter (móvil) | **Play Store / App Store** | Firebase App Distribution (beta) | Distribución oficial |
-| Cualquiera con DB | **Railway + Fly.io** | Render | DB gestionada + app separadas |
+| Stack             | Recomendado                | Alternativas                     | Cuándo elegirlo                               |
+| ----------------- | -------------------------- | -------------------------------- | --------------------------------------------- |
+| Next.js / React   | **Vercel**                 | Railway, Fly.io, Netlify         | SSR fácil, preview por PR, plan free generoso |
+| Django / FastAPI  | **Railway**                | Fly.io, Render, Cloud Run        | DB Postgres incluida, deploy por git push     |
+| Go                | **Fly.io**                 | Railway, Cloud Run               | Binario compacto, edge deploy global          |
+| Flutter (web)     | **Firebase Hosting**       | Vercel, Netlify                  | Hosting estático + Firebase stack             |
+| Flutter (móvil)   | **Play Store / App Store** | Firebase App Distribution (beta) | Distribución oficial                          |
+| Cualquiera con DB | **Railway + Fly.io**       | Render                           | DB gestionada + app separadas                 |
 
 **Criterios de decisión:**
+
 - **¿Presupuesto $0?** → Vercel (Next.js), Fly.io free tier
 - **¿Necesitas DB gestionada?** → Railway, Render
 - **¿Tráfico global?** → Fly.io, Cloud Run
@@ -262,6 +265,7 @@ git log --oneline -5
 ### 4. Plantillas de Dockerfile (referencia para la task de docker)
 
 **Next.js / React:**
+
 ```dockerfile
 FROM node:22-alpine AS builder
 WORKDIR /app
@@ -281,6 +285,7 @@ CMD ["node", "server.js"]
 ```
 
 **Django:**
+
 ```dockerfile
 FROM python:3.12-slim
 WORKDIR /app
@@ -294,6 +299,7 @@ CMD ["uv", "run", "gunicorn", "config.wsgi:application", "--bind", "0.0.0.0:8000
 ```
 
 **FastAPI:**
+
 ```dockerfile
 FROM python:3.12-slim
 WORKDIR /app
@@ -306,6 +312,7 @@ CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ```
 
 **Go:**
+
 ```dockerfile
 FROM golang:1.22-alpine AS builder
 WORKDIR /app
@@ -323,6 +330,7 @@ CMD ["/server"]
 ### 5. Plantillas de GitHub Action (referencia para la task de workflow)
 
 **Vercel (Next.js):**
+
 ```yaml
 name: Deploy to Vercel
 on:
@@ -351,6 +359,7 @@ jobs:
 ```
 
 **Railway (Django / FastAPI / Go):**
+
 ```yaml
 name: Deploy to Railway
 on:
@@ -369,6 +378,7 @@ jobs:
 ```
 
 **Fly.io (cualquier stack con Docker):**
+
 ```yaml
 name: Deploy to Fly.io
 on:
@@ -457,6 +467,7 @@ done
 ```
 
 Colores recomendados (no bloquea si fallan):
+
 - `deploy` → `0E8A16`
 - `chore` → `5319E7`
 - componentes → `BFD4F2`
@@ -574,16 +585,16 @@ Repetir para cada componente listado en el paso 7. **No olvidar la mutación `ad
 
 **Plantillas de tasks recomendadas por componente:**
 
-| Componente | Título | Criterios de aceptación |
-|---|---|---|
-| `docker` | Generar Dockerfile multistage para `<stack>` | `docker build .` pasa; imagen < 200MB; USER no-root |
-| `workflow` | Crear `.github/workflows/deploy.yml` para `<provider>` | `gh workflow run` simulado pasa; depende de job `test` |
-| `env` | Generar `.env.example` desde scan del código | Todas las vars usadas declaradas; sin valores reales |
-| `secrets` | Configurar secrets `<X, Y, Z>` en GitHub | `gh secret list` muestra todos los nombres requeridos |
-| `gitignore` | Asegurar `.env` y configs locales en `.gitignore` | `git check-ignore .env` retorna 0 |
-| `firstdeploy` | Primer deploy de prueba a preview/staging | URL responde 200; logs sin errores; healthcheck OK |
-| `newenv` | Configurar nuevo entorno `<staging\|preview>` | Entorno levantado; secrets aislados; promoción manual configurada |
-| `rotate` | Rotar secret `<NOMBRE>` | Secret nuevo activo; deploy con secret nuevo pasa; secret viejo revocado en el proveedor |
+| Componente    | Título                                                 | Criterios de aceptación                                                                  |
+| ------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------------------- |
+| `docker`      | Generar Dockerfile multistage para `<stack>`           | `docker build .` pasa; imagen < 200MB; USER no-root                                      |
+| `workflow`    | Crear `.github/workflows/deploy.yml` para `<provider>` | `gh workflow run` simulado pasa; depende de job `test`                                   |
+| `env`         | Generar `.env.example` desde scan del código           | Todas las vars usadas declaradas; sin valores reales                                     |
+| `secrets`     | Configurar secrets `<X, Y, Z>` en GitHub               | `gh secret list` muestra todos los nombres requeridos                                    |
+| `gitignore`   | Asegurar `.env` y configs locales en `.gitignore`      | `git check-ignore .env` retorna 0                                                        |
+| `firstdeploy` | Primer deploy de prueba a preview/staging              | URL responde 200; logs sin errores; healthcheck OK                                       |
+| `newenv`      | Configurar nuevo entorno `<staging\|preview>`          | Entorno levantado; secrets aislados; promoción manual configurada                        |
+| `rotate`      | Rotar secret `<NOMBRE>`                                | Secret nuevo activo; deploy con secret nuevo pasa; secret viejo revocado en el proveedor |
 
 ### 11. Agregar work-item + tasks al GitHub Project
 

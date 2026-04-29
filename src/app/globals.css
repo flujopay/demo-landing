@@ -1,3 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-canaro: var(--font-canaro);
+  --font-adobe: var(--font-adobe);
+  --font-caslon: var(--font-caslon);
+
+  --color-brand-primary: #3771d1;
+  --color-brand-primary-light: #3771d1;
+  --color-brand-primary-dark: #1e2c50;
+
+  --color-brand-secondary: #f6793a;
+  --color-brand-secondary-light: #f79243;
+  --color-brand-secondary-dark: #f6793a;
+}

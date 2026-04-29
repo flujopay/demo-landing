@@ -1,6 +1,5 @@
-import { redirect } from "next/navigation";
+import { HomePage } from "@/modules/home/ui/HomePage";
 
-// La raíz redirige al dashboard; el middleware se encarga de redirigir a /login si no hay sesión
 export default function Home() {
-  redirect("/dashboard");
+  return <HomePage />;
 }

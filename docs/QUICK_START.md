@@ -39,6 +39,7 @@ Guía corta para trabajar en este repo con Claude Code. Pegado aquí para que **
 **User:** Quiero un endpoint `GET /users` con paginación.
 
 **Claude:** Voy a crear en GitHub:
+
 - Work-item padre: `feat: paginated users endpoint`
 - Sub-issue #1: Crear ruta `GET /users?page&limit`
 - Sub-issue #2: Query con offset a la DB
@@ -48,7 +49,7 @@ Guía corta para trabajar en este repo con Claude Code. Pegado aquí para que **
 
 **User:** Sí.
 
-*Crea work-item #15 + sub-issues #16, #17, #18 vinculados nativamente.*
+_Crea work-item #15 + sub-issues #16, #17, #18 vinculados nativamente._
 
 ### `/apply`
 
@@ -68,7 +69,7 @@ Guía corta para trabajar en este repo con Claude Code. Pegado aquí para que **
 
 **User:** Sí.
 
-*Crea PR #19, closes #15 #16 #17 #18.*
+_Crea PR #19, closes #15 #16 #17 #18._
 
 **Claude:** PR listo → [#19](../../pull/19). ¿Cómo cerrar el PR?
 
@@ -97,40 +98,40 @@ Guía corta para trabajar en este repo con Claude Code. Pegado aquí para que **
 
 ### Flujo principal
 
-| Comando | Cuándo usarlo | Qué hace |
-|---|---|---|
-| `/init` | Al arrancar sesión | Lee issues/PRs/work-items, posiciona en `dev`, detecta drift, limpia estados zombies |
-| `/plan` | Para planificar trabajo nuevo | Crea work-item padre + tasks vinculadas como sub-issues nativos. Pide confirmación antes de crear nada |
-| `/apply` | Implementar la task activa | Lee plan, escribe código, corre tests. Una task a la vez |
-| `/test` | Correr tests aislados | Ejecuta el suite del repo según el stack |
-| `/build` | Cerrar una task | Commit (confirma) + push (confirma) + cierra issue. Al cerrar la última task del work-item, ofrece el PR único |
-| `/review` | Code review del PR | Checklist completo: bloqueantes, mejoras, nits |
+| Comando   | Cuándo usarlo                 | Qué hace                                                                                                       |
+| --------- | ----------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `/init`   | Al arrancar sesión            | Lee issues/PRs/work-items, posiciona en `dev`, detecta drift, limpia estados zombies                           |
+| `/plan`   | Para planificar trabajo nuevo | Crea work-item padre + tasks vinculadas como sub-issues nativos. Pide confirmación antes de crear nada         |
+| `/apply`  | Implementar la task activa    | Lee plan, escribe código, corre tests. Una task a la vez                                                       |
+| `/test`   | Correr tests aislados         | Ejecuta el suite del repo según el stack                                                                       |
+| `/build`  | Cerrar una task               | Commit (confirma) + push (confirma) + cierra issue. Al cerrar la última task del work-item, ofrece el PR único |
+| `/review` | Code review del PR            | Checklist completo: bloqueantes, mejoras, nits                                                                 |
 
 ### Soporte
 
-| Comando | Cuándo usarlo |
-|---|---|
-| `/debug` | Cuando `/apply` o `/test` fallan repetidamente |
-| `/sync` | Cuando hay drift entre código y GitHub (issues, tasks, PRs) |
-| `/triage` | Limpieza periódica de issues / cierre en bulk de tasks cubiertas |
+| Comando     | Cuándo usarlo                                                      |
+| ----------- | ------------------------------------------------------------------ |
+| `/debug`    | Cuando `/apply` o `/test` fallan repetidamente                     |
+| `/sync`     | Cuando hay drift entre código y GitHub (issues, tasks, PRs)        |
+| `/triage`   | Limpieza periódica de issues / cierre en bulk de tasks cubiertas   |
 | `/branches` | Setup inicial de las 3 ramas protegidas (`main`, `staging`, `dev`) |
-| `/cross` | Cambios que afectan múltiples repos en un workspace |
-| `/design` | Trabajo de UI/UX, prototipado |
+| `/cross`    | Cambios que afectan múltiples repos en un workspace                |
+| `/design`   | Trabajo de UI/UX, prototipado                                      |
 
 ### Seguridad
 
-| Comando | Alcance | Cuándo |
-|---|---|---|
-| `/secure` | **Próximo deploy** (rápido, bloqueante) | Antes de cada deploy a prod |
-| `/audit` | **PR actual** (profundo, OWASP Top 10) | Antes de mergear cambios sensibles (auth, pagos, uploads) |
+| Comando    | Alcance                                      | Cuándo                                                                       |
+| ---------- | -------------------------------------------- | ---------------------------------------------------------------------------- |
+| `/secure`  | **Próximo deploy** (rápido, bloqueante)      | Antes de cada deploy a prod                                                  |
+| `/audit`   | **PR actual** (profundo, OWASP Top 10)       | Antes de mergear cambios sensibles (auth, pagos, uploads)                    |
 | `/pentest` | **Todo el proyecto** (exhaustivo, periódico) | Mensual sobre `main`. Crea work-item padre + sub-issues nativos por hallazgo |
 
 ### Producción
 
-| Comando | Cuándo |
-|---|---|
-| `/deploy` | Configurar CI/CD o verificar estado de producción. **Detecta si ya está enlazado a un proveedor y no reconfigura si todo está sano.** |
-| `/rollback` | Cuando un deploy rompe producción |
+| Comando     | Cuándo                                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `/deploy`   | Configurar CI/CD o verificar estado de producción. **Detecta si ya está enlazado a un proveedor y no reconfigura si todo está sano.** |
+| `/rollback` | Cuando un deploy rompe producción                                                                                                     |
 
 ---
 
@@ -159,13 +160,13 @@ Tipos válidos: `feat`, `fix`, `hotfix`, `refactor`, `docs`, `test`, `chore`, `p
 
 ## Convenciones de ramas
 
-| Tipo de work-item | Prefijo de rama |
-|---|---|
-| feature | `feature/<N>-<slug>` |
-| refactor | `refactor/<N>-<slug>` |
-| fix | `fix/<N>-<slug>` |
-| chore | `chore/<N>-<slug>` |
-| hotfix urgente | `hotfix/<N>-<slug>` (desde `main`) |
+| Tipo de work-item | Prefijo de rama                    |
+| ----------------- | ---------------------------------- |
+| feature           | `feature/<N>-<slug>`               |
+| refactor          | `refactor/<N>-<slug>`              |
+| fix               | `fix/<N>-<slug>`                   |
+| chore             | `chore/<N>-<slug>`                 |
+| hotfix urgente    | `hotfix/<N>-<slug>` (desde `main`) |
 
 ---
 

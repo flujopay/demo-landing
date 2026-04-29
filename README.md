@@ -49,21 +49,26 @@ src/
 ## Qué viene preconfigurado
 
 ### TypeScript
+
 - `"strict": true`, sin `any`
 
 ### UI
+
 - Tailwind CSS + `clsx` + `tailwind-merge`
 - `next/font` con Inter preconfigurado
 
 ### HTTP y estado
+
 - `axios` con `httpClient` e interceptors de auth (JWT) y errores
 - `zustand` — store de auth (token, user, logout)
 - `@tanstack/react-query` con `QueryProvider` y devtools
 
 ### Formularios y validación
+
 - `react-hook-form` + `zod` — ejemplo funcional en LoginForm
 
 ### Auth completo listo
+
 - `LoginForm` funcional con validación Zod
 - `auth.service.ts` — `login()`, `register()`, `refreshToken()`
 - `useLogin` hook con `useMutation` de TanStack Query
@@ -72,6 +77,7 @@ src/
 - `middleware.ts` con auth guard (redirect a `/login` si no hay token)
 
 ### Tooling
+
 - ESLint + Prettier + `lint-staged` + `husky`
 - `.env.local.example` con las variables necesarias
 
@@ -86,10 +92,10 @@ git commit -m "chore: update dependencies"
 
 ## Convención de módulos
 
-| Carpeta | Rol |
-|---------|-----|
-| `modules/core/` | Shared: http, store, providers, UI genérica |
-| `modules/auth/` | Dominio: auth completo incluido |
-| `modules/<dominio>/` | Nuevos dominios al mismo nivel |
+| Carpeta              | Rol                                         |
+| -------------------- | ------------------------------------------- |
+| `modules/core/`      | Shared: http, store, providers, UI genérica |
+| `modules/auth/`      | Dominio: auth completo incluido             |
+| `modules/<dominio>/` | Nuevos dominios al mismo nivel              |
 
 Cada módulo de dominio sigue la estructura `lib/` (services, hooks, validators, types) + `ui/` (componentes).
