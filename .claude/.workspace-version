@@ -1,0 +1,72 @@
+{
+  "version": "1.1.3",
+  "skills": {
+    "init": "cc49506669f34febed7b245a88f8d4696029fe2ee19a5d76b09e30a4f1fbc723",
+    "plan": "5309f62339646041e022e8026c3ff84ece4f69bddd62a31437760076c3d51bb1",
+    "apply": "7f282d42c1c3014a3986c58a84b56159457fad54bc49b30b1fc1af1f16f2dd44",
+    "test": "697fca5ed8124039fafe2ab34ccaaaeeede2cd709b23173c861acf5bd9042ecd",
+    "build": "3d42432673d97fa019a3df649bf27477595314e213cd3e19b2e1bb1b380e09ea",
+    "review": "a6852f36796b81f846f9b7f04ffcc7f91f1431e2f5a0d64639750bde96bbf8a3",
+    "secure": "437c5a0696ddcb0f3558606021a1a2098a86e6c0b247d82ac88c2a881fcbd265",
+    "deploy": "2e215ad9e8cef9155322532c5af0b04de10310b3da5469f8a5f413c12dd9a6cb",
+    "branches": "b4d385b4b63224be3eb7662cdd2e95c5799d075fadc6d47c58f8534c1d8121a6",
+    "debug": "b574bd8cf83d64675cbd3a4a04216f682e1f90f9f89bd35e442ec04a788a25b2",
+    "audit": "8b811d279b6076bbd59d19483d0da16871c3e8cb766c795f51d5aaae7f334393",
+    "pentest": "f504e4bb7de39587d3230f4be743e95a82347ce61225729abf1ccd042bc7173b",
+    "sync": "1468b35b4716bd4a4eaf964c4431c84b07a4757e852c80fe1a6b51b5a4654b34",
+    "rollback": "121e1374e1a81adf6974f11120155f17af51cf72f62aa5adfafe961c8dff289c",
+    "design": "f9ab665ea7d6a7f9d729b382cdd3fd72f905d0e49dcebefac2a7b56704322335",
+    "triage": "8a72a168c75c10a76d000621f07505eb8ef8735367970813e477c669618b1611",
+    "cross": "77b3bc439350fb2f12be73738a58b15aadedc38276840c947bfb53b90ecc3d79",
+    "setup": "6ede68bbcb51500b0f216b5fbb99bcc1cf49959429c8ce59dc27926422f9a325"
+  },
+  "rules": {
+    "branching.md": "58311e7579acbb3da3f67d1b2b21f73209b1b261d774b5ec4226b02cc6fb5186",
+    "commits.md": "0a17cca22d9b48ae75dc85c3939d71fb85f16da1f898ad4989d868cfa6298fa0",
+    "tests.md": "c11197669d613142649c380f100842487dfe3f5bde543ddc33eed7d4f4593e13",
+    "typescript.md": "71d5ffa043d5ecbcfe1dfd7b64dea5daafbf9373167e0c72cc10bc618117da4c"
+  },
+  "scripts": {
+    "gh-isolated.sh": "17cf8cb32170563cf1a16ce8d1971210a11dba33a2a29a25787312818d60d64d",
+    "resolve-gh-creds.sh": "ed8308952637461fbe04d7abeb44aa1823a351ec1f6a77283ed9b90c608ce443"
+  },
+  "github": {
+    ".github/ISSUE_TEMPLATE/feature.md": "e9ce82456cc53993280092d926fd963075ad3572be9019bc1852f3427f4c03d5",
+    ".github/ISSUE_TEMPLATE/refactor.md": "fca06305282c21d7b89201fe024deaae6fd4f33e09c106d55458b6ab8d5c6195",
+    ".github/ISSUE_TEMPLATE/chore.md": "9f77ba85f72af2474698cb217d059d5b58a736e5518df1194586c067847bdae2",
+    ".github/ISSUE_TEMPLATE/bug.md": "c9cffee8c4d434490ef90be1ab2ed25b44cd73f29ffcc2488599cdaf35cca334",
+    ".github/ISSUE_TEMPLATE/task.md": "a21bfac02b8e34dcf3aae13177e84db32c7d275da3cc002377a0161b3549f497",
+    ".github/pull_request_template.md": "d8b1165aff86dea1336e46e065fdfdb15fc111b1017006bc249e59aa573e9cf9"
+  },
+  "claudeMd": {
+    "kind": "single",
+    "context": {
+      "projectName": "demo-landing",
+      "projectDescription": "demo landing",
+      "stack": "Next.js / React",
+      "port": "N/A",
+      "owner": "flujopay",
+      "repoName": "demo-landing"
+    },
+    "templateFile": "CLAUDE.single.md.hbs",
+    "templateHash": "1517f13626b47cb3572274eb4295026fa0f4f14659fe48b32e0b0047048598f7",
+    "lastRenderedHash": "2cb4d3b0b4670c40ef74f30e2516f57cae909fbe23307eed8624ccf6c4ec6d11",
+    "regeneratedAt": "2026-04-29T21:49:29.921Z"
+  },
+  "quickStart": {
+    "context": {
+      "projectName": "demo-landing",
+      "owner": "flujopay",
+      "repoName": "demo-landing",
+      "stack": "Next.js / React",
+      "port": "N/A"
+    },
+    "templateFile": "docs/QUICK_START.md.hbs",
+    "templateHash": "41ebd87db1ea1b601bf83a6bf39a8ec7647d272ef275b96a7721e6c1995fc690",
+    "lastRenderedHash": "4b2f0043995bac4c5f99612ce56c9769d971e483006d338e7d967a0ac3f612fd",
+    "regeneratedAt": "2026-04-29T21:49:29.924Z",
+    "destPath": "docs/QUICK_START.md"
+  },
+  "installedAt": "2026-04-29T21:49:29.930Z",
+  "updatedAt": "2026-04-29T21:49:29.932Z"
+}

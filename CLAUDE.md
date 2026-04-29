@@ -1,78 +1,103 @@
-# nextjs-template — Contexto para Claude Code
+# CLAUDE.md
 
-## Stack
+Guía para Claude Code en este repositorio.
 
-- Next.js 15 (App Router) + React 19 + TypeScript strict
-- Tailwind CSS + clsx + tailwind-merge
-- Axios (HTTP) + Zustand (estado) + TanStack Query (server state)
-- react-hook-form + Zod (formularios y validación)
-- Yarn como gestor de paquetes
+## Qué es demo-landing
 
-## Estructura de módulos
+demo landing
 
-```
-src/
-├── app/                     # Rutas Next.js (App Router)
-│   ├── (auth)/              # Rutas públicas: login, register
-│   └── (dashboard)/         # Rutas protegidas
-└── modules/
-    ├── core/                # Shared: sin dominio de negocio
-    │   ├── lib/services/    # http-client con interceptors JWT
-    │   ├── lib/store/       # auth.store (Zustand)
-    │   ├── lib/providers/   # QueryProvider (TanStack)
-    │   └── ui/              # Button, Input y componentes genéricos
-    └── auth/                # Módulo de autenticación
-        ├── lib/services/    # auth.service (login, register, refresh, getMe)
-        ├── lib/hooks/       # useLogin, useRegister
-        ├── lib/validators/  # login.schema, register.schema (Zod)
-        ├── lib/types/       # auth.types
-        └── ui/              # LoginForm, RegisterForm
-```
+**Repo:** `flujopay/demo-landing`
+**Stack:** Next.js / React
+**Puerto local:** N/A
 
-## Convenciones clave
+## Stack y dependencias
 
-- `@/` → alias para `src/`
-- Nuevos dominios van en `src/modules/<dominio>/` con la misma estructura de `auth/`
-- Nunca usar `any` — TypeScript strict
-- Componentes de UI genérica van en `modules/core/ui/`
-- El store de Zustand vive en `modules/core/lib/store/`
-- El `httpClient` maneja el refresh de token automáticamente en 401
+Ver `package.json` / `pyproject.toml` / equivalente para la lista completa.
 
-## Comandos frecuentes
-
+**Para levantar localmente:**
 ```bash
-# Desarrollo
-yarn dev
+# Instalar dependencias
+npm install   # o: pip install -r requirements.txt / poetry install
 
-# Build
-yarn build
-
-# Typecheck
-yarn typecheck
-
-# Lint
-yarn lint
-
-# Formato
-yarn format
+# Levantar servidor de desarrollo
+npm run dev   # o el comando equivalente del stack
 ```
 
-## Variables de entorno
+## Convenciones
 
-```bash
-cp .env.local.example .env.local
-# Editar NEXT_PUBLIC_API_URL con la URL del backend Django
-```
+### Commits
 
-## Agregar un nuevo módulo de dominio
+Formato conventional commits:
 
 ```
-src/modules/<dominio>/
-├── lib/
-│   ├── services/<dominio>.service.ts
-│   ├── hooks/use-<accion>.ts
-│   ├── validators/<dominio>.schema.ts
-│   └── types/<dominio>.types.ts
-└── ui/
-    └── <Componente>.tsx
+feat(scope): descripción #N
+fix(scope): descripción #N
+hotfix(scope): descripción #N
+refactor(scope): descripción #N
+docs(scope): descripción #N
+chore(scope): descripción #N
 ```
+
+Types válidos: `feat`, `fix`, `hotfix`, `refactor`, `docs`, `test`, `chore`, `perf`, `ci`, `build`, `style`, `revert`. Header máximo 100 chars.
+
+### Branching
+
+Modelo **3 branches protegidas**:
+
+| Branch | Rol |
+|---|---|
+| `main` | Producción. Solo recibe merges desde `staging` y hotfixes. |
+| `staging` | Pre-producción / QA. Recibe merges desde `dev`. |
+| `dev` | Integración. Default para features y fixes. |
+| `feat/*`, `fix/*`, `hotfix/*` | Ramas de trabajo efímeras. |
+
+**Flujo estándar:**
+1. Crea branch desde `dev`: `git checkout -b feat/issue-{N}-descripcion`
+2. Commits conventional referenciando issue: `feat(scope): descripción #N`
+3. Abre PR contra `dev`. Body incluye `Closes #N`.
+4. Squash merge → `dev`.
+
+### Tests
+
+- Cada feature requiere: happy path + validation errors + auth errors.
+- No escribir tests vacíos sin asserts.
+- Correr el test con el código roto para confirmar que falla primero.
+
+## Context policy
+
+Todo contexto de proyecto vive en GitHub.
+
+| Contexto | Dónde |
+|---|---|
+| Estado de una feature | Issue de GitHub (comments) |
+| Plan de un work-item | Body del issue padre + sub-issues (tasks) |
+| Progreso de sesión | Comment en el issue activo |
+| Convenciones | Este `CLAUDE.md` + `.claude/rules/` |
+| Preferencias personales | `CLAUDE.local.md` (no commitear) |
+
+## Flujo estándar de trabajo
+
+```
+Desarrollo:
+  /init → /plan → /apply → /test → /build → /review
+
+Deploy:
+  /secure → /deploy
+
+Soporte:
+  /debug    — cuando /apply o /test fallan
+  /audit    — revisión OWASP profunda antes de mergear cambios sensibles
+  /pentest  — barrida completa de seguridad sobre todo el proyecto (periódico)
+  /sync     — cuando hay drift entre código y GitHub
+  /rollback — cuando un deploy rompe producción
+  /design   — cuando hay trabajo de UI/UX
+  /triage   — limpieza periódica de issues
+```
+
+**Reglas operativas para Claude:**
+
+1. Al arrancar sesión: `/init`
+2. Al cerrar sesión: `/build`
+3. Antes de cada deploy: `/secure` es obligatorio.
+4. Si el plan en GitHub no refleja el código: correr `/sync`.
+5. Aprendizajes que deben persistir: commitear al `CLAUDE.md`.
