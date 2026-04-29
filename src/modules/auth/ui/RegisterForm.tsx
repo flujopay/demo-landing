@@ -23,7 +23,7 @@ export function RegisterForm() {
     resolver: zodResolver(registerSchema),
   });
 
-  const onSubmit = ({ passwordConfirm: _, ...data }: RegisterFormValues) => {
+  const onSubmit = ({ passwordConfirm: _passwordConfirm, ...data }: RegisterFormValues) => {
     register(data);
   };
 

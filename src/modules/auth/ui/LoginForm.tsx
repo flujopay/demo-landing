@@ -51,9 +51,7 @@ export function LoginForm() {
           {...register("password")}
         />
 
-        {error ? (
-          <p className="text-sm text-red-500">Email o contraseña incorrectos</p>
-        ) : null}
+        {error ? <p className="text-sm text-red-500">Email o contraseña incorrectos</p> : null}
 
         <Button type="submit" isLoading={isPending} className="w-full">
           Ingresar

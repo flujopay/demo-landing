@@ -1,9 +1,9 @@
 ---
 name: Chore (work-item)
 about: Mantenimiento técnico (deps, CI, tooling). Agrupa tasks bajo una rama y un PR único.
-title: '[CHORE] '
+title: "[CHORE] "
 labels: chore
-assignees: ''
+assignees: ""
 ---
 
 ## Objetivo
@@ -18,7 +18,7 @@ assignees: ''
 
 ## Criterios de aceptación
 
-- [ ] 
+- [ ]
 
 ## Repos afectados
 

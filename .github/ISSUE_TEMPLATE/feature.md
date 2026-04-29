@@ -1,9 +1,9 @@
 ---
 name: Feature (work-item)
 about: Funcionalidad nueva. Agrupa tasks bajo una rama y un PR único.
-title: '[FEATURE] '
+title: "[FEATURE] "
 labels: feature
-assignees: ''
+assignees: ""
 ---
 
 ## Objetivo
@@ -18,7 +18,7 @@ assignees: ''
 
 ## Criterios de aceptación
 
-- [ ] 
+- [ ]
 
 ## Repos afectados
 
